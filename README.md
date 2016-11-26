@@ -48,7 +48,7 @@ instantiated.
 
 The `interface` module exports two different interface types:
 `Interface.StrictInterface` and `Interface.LooseInterface`.
-See [Loose Mode](#Loose-Mode) for *Loose Mode* conventions. It
+See [Loose Mode](#loose-mode) for *Loose Mode* conventions. It
 also exports the general `Interface` type which has the
 `Interface(klass: interface-object, strict: boolean)` signature.
 The `Interface` type defaults to Strict mode if you don't specify
