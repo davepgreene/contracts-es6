@@ -27,7 +27,7 @@ test('Generates an appropriate error string for a method with the incorrect numb
   const str = ImplementationError.generateErrorString('TestImpl', 'method1', errObj);
 
   t.is(str, 'TestImpl implements `method1` with an incorrect number of arguments. ' +
-        'The correct signature is `method1(foo, bar, baz)`.');
+    'The correct signature is `method1(foo, bar, baz)`.');
 });
 
 test('Generates an appropriate error string for a method with incorrectly named arguments', (t) => {
@@ -36,8 +36,8 @@ test('Generates an appropriate error string for a method with incorrectly named 
 
   const str = ImplementationError.generateErrorString('TestImpl', 'method1', errObj);
 
-    t.is(str, 'TestImpl implements `method1` with incorrectly named arguments. ' +
-        'The correct signature is `method1(foo, bar, baz)`.');
+  t.is(str, 'TestImpl implements `method1` with incorrectly named arguments. ' +
+    'The correct signature is `method1(foo, bar, baz)`.');
 });
 
 test('Throws is given an error type it doesn\'t understand', (t) => {
