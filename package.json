@@ -1,0 +1,42 @@
+{
+  "name": "contracts-es6",
+  "version": "0.0.1",
+  "description": "Force your ES6 classes to conform to an interface!",
+  "main": "lib/main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "nyc ava test/*.js",
+    "coverage": "nyc report --reporter=text-summary",
+    "lint": "eslint */**.js"
+  },
+  "bugs": {
+    "url": "https://github.com/davepgreene/contracts-es6/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davepgreene/contracts-es6.git"
+  },
+  "keywords": [
+    "interface",
+    "contract",
+    "es6"
+  ],
+  "author": {
+    "name": "Dave Greene",
+    "email": "davepgreene@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "eslint": "^3.10.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-ava": "^4.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.7.1",
+    "nyc": "^10.0.0",
+    "tape": "^4.6.3"
+  }
+}
