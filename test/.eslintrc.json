@@ -1,0 +1,19 @@
+{
+    "env": {
+        "es6": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "ava"
+    ],
+    "extends": "plugin:ava/recommended",
+    "rules": {
+        "class-methods-use-this": "off",
+        "no-unused-vars": "off",
+        "func-names": "off",
+        "no-useless-constructor": "off"
+    }
+}
