@@ -2,7 +2,7 @@
   "name": "contracts-es6",
   "version": "0.0.1",
   "description": "Force your ES6 classes to conform to an interface!",
-  "main": "lib/main.js",
+  "main": "lib/interface.js",
   "directories": {
     "test": "test"
   },
