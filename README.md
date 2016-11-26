@@ -67,33 +67,25 @@ disable the `no-unused-vars` rule.
 ## ESLint
 Conventions in this library differ with some well-established
 ESLint rules. To make sure that use of `Interface` passes ESLint
-checks you should disable [`class-methods-use-this`][class-methods-use-this]
-for your interface declarations:
-```javascript
-/* eslint-disable-rule class-methods-use-this */
-```
-or
-```json
-{
-    "rules": {
-        "class-methods-use-this": ["off"]
-    }
-}
-```
-and [`no-unused-vars`][no-unused-vars] for `args`
-to use *Strict Mode*:
-```javascript
-/* eslint no-unused-vars: ["error", { "args": "none" }] */
-```
-or
-```json
-{
-    "rules": {
-        "no-unused-vars": ["error", { "args": "none" }]
-    }
-}
-```
+checks you should disable the following rules:
 
+* [`class-methods-use-this`][class-methods-use-this]
+* [`no-empty-function`][no-empty-function]
+* [`no-unused-vars`][no-unused-vars] for `args` (only applies if using *Strict Mode*)
+
+```javascript
+/* eslint-disable-rule class-methods-use-this, no-empty-function, no-unused-vars */
+```
+or
+```json
+{
+    "rules": {
+        "class-methods-use-this": "off",
+        "no-empty-function": "off",
+        "no-unused-vars": ["error", { "args": "none" }],
+    }
+}
+```
 
 [interfaces]: https://en.wikipedia.org/wiki/Interface_(computing)#Software_interfaces_in_object-oriented_languages
 [Java]: https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html
@@ -101,3 +93,4 @@ or
 [Node.js]: https://nodejs.org
 [no-unused-vars]: http://eslint.org/docs/rules/no-unused-vars
 [class-methods-use-this]: http://eslint.org/docs/rules/class-methods-use-this
+[no-empty-function]: http://eslint.org/docs/rules/no-empty-function
