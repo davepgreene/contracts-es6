@@ -63,7 +63,7 @@ JavaScript developers tend to play fast and loose with
 implementation method signatures, preferring to only specify
 used arguments. ESLint includes a [rule (no-unused-vars)][no-unused-vars]
 that enforces this concept. To use *Strict Mode* you'll need to
-disable the `no-unused-vars` rule.
+disable it and a few other rules (see [ESLint](#eslint).).
 
 ## ESLint
 Conventions in this library differ with some well-established
