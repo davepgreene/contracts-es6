@@ -6,8 +6,9 @@ Have you ever wished that JavaScript implemented [interfaces][] like
 [Java][], [C#][], or other statically typed languages?
 
 ES6 Contracts provides instantiation-time interface validation for
-ES6 classes. This project was developed with an eye for
-[Node.js][] v6.8.1 or higher but should work in any environment.
+ES6 classes. This project was developed against [Node.js][] v7
+but is tested against Node.js >= 4. It should run just fine
+in the browser as well.
 
 ## Usage
 ```javascript
