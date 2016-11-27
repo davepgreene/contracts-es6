@@ -1,9 +1,13 @@
 const test = require('ava');
 
-const { ImplementationError } = require('../lib/error');
-const { TestStrictImpl, TestInheritStrictImpl, ERROR_BASE, TestInterface } = require('./_consts');
+const ImplementationError = require('../lib/error').ImplementationError;
+const setup = require('./_consts');
 const Interface = require('../lib/interface');
 
+const TestStrictImpl = setup.TestStrictImpl;
+const TestInheritStrictImpl = setup.TestInheritStrictImpl;
+const TestInterface = setup.TestInterface;
+const ERROR_BASE = setup.ERROR_BASE;
 
 // Call this at the end of every test
 test.afterEach.always(require('./_consts').reset);

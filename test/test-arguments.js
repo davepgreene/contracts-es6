@@ -1,7 +1,13 @@
+'use strict';
+
 const test = require('ava');
 
 const ImplementationError = require('../lib/error').ImplementationError;
-const { getArguments, compareArguments, getFunctionArguments } = require('../lib/utils/arguments');
+const argsUtils = require('../lib/utils/arguments');
+
+const getArguments = argsUtils.getArguments;
+const compareArguments = argsUtils.compareArguments;
+const getFunctionArguments = argsUtils.getFunctionArguments;
 
 class TestImpl {
   method1(foo) { }

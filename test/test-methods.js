@@ -1,7 +1,10 @@
 const test = require('ava');
 
 const ImplementationError = require('../lib/error').ImplementationError;
-const { getMethods, compareMethods } = require('../lib/utils/methods');
+const methods = require('../lib/utils/methods');
+
+const getMethods = methods.getMethods;
+const compareMethods = methods.compareMethods;
 
 class TestInterface {
   method1() { }

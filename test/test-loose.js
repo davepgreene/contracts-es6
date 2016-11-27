@@ -1,7 +1,11 @@
 const test = require('ava');
 
-const { ImplementationError } = require('../lib/error');
-const { TestLooseImpl, TestInheritLooseImpl, ERROR_BASE } = require('./_consts');
+const ImplementationError = require('../lib/error').ImplementationError;
+const setup = require('./_consts');
+
+const TestLooseImpl = setup.TestLooseImpl;
+const TestInheritLooseImpl = setup.TestInheritLooseImpl;
+const ERROR_BASE = setup.ERROR_BASE;
 
 
 // Call this at the end of every test

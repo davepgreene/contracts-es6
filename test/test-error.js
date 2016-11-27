@@ -1,6 +1,8 @@
+'use strict';
+
 const test = require('ava');
 
-const { ImplementationError } = require('../lib/error');
+const ImplementationError = require('../lib/error').ImplementationError;
 
 const errObj = {
   type: ImplementationError.METHOD_MISSING,
