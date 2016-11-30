@@ -2,6 +2,7 @@ const test = require('ava');
 
 const ImplementationError = require('../lib/error').ImplementationError;
 const methods = require('../lib/utils/methods');
+const Mode = require('../lib/utils/mode');
 
 const getMethods = methods.getMethods;
 const compareMethods = methods.compareMethods;
@@ -116,5 +117,5 @@ test('compareMethods - Assigns the correct strictness level for methods that are
     { object: TestInterface.prototype, methods: ['method1', 'method2', 'method3'] });
 
   const err = compare.get('method1');
-  t.false(err.strict);
+  t.deepEqual(err.mode, [Mode.STRICT, Mode.LOOSE, Mode.UNBOUNDED]);
 });

@@ -4,6 +4,7 @@ const test = require('ava');
 
 const ImplementationError = require('../lib/error').ImplementationError;
 const argsUtils = require('../lib/utils/arguments');
+const Mode = require('../lib/utils/mode');
 
 const getArguments = argsUtils.getArguments;
 const compareArguments = argsUtils.compareArguments;
@@ -67,7 +68,7 @@ test('compareArguments - Generates an error if an implementation method has too 
   const out = new Map();
   out.set('method3', {
     type: ImplementationError.INCORRECT_ARGUMENT_NUMBER,
-    strict: true,
+    mode: [Mode.STRICT, Mode.UNBOUNDED],
     signature: 'method3(baz, quiz, buzz)',
   });
 
@@ -90,7 +91,7 @@ test('compareArguments - Generates an error if an implementation method has too 
   const out = new Map();
   out.set('method3', {
     type: ImplementationError.INCORRECT_ARGUMENT_NUMBER,
-    strict: true,
+    mode: [Mode.STRICT, Mode.UNBOUNDED],
     signature: 'method3(baz, quiz, buzz)',
   });
 
@@ -125,7 +126,7 @@ test('compareArguments - Generates an error if an implementation method has an i
   const out = new Map();
   out.set('method3', {
     type: ImplementationError.INCORRECT_ARGUMENT_NAMES,
-    strict: true,
+    mode: [Mode.STRICT, Mode.UNBOUNDED],
     signature: 'method3(baz, buzz)',
   });
 

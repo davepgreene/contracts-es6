@@ -3,10 +3,11 @@
 const test = require('ava');
 
 const ImplementationError = require('../lib/error').ImplementationError;
+const Mode = require('../lib/utils/mode');
 
 const errObj = {
   type: ImplementationError.METHOD_MISSING,
-  strict: false,
+  mode: [Mode.STRICT, Mode.LOOSE, Mode.UNBOUNDED],
   signature: 'method1(foo, bar, baz)',
 };
 
