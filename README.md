@@ -11,8 +11,9 @@ but is tested against Node.js >= 4. It should run just fine
 in the browser as well.
 
 ## Usage
+
 ```javascript
-const Interface = require('./lib/interface');
+const Interface = require('contracts-es6');
 
 // Note the empty function bodies
 class TestInterface {
@@ -51,13 +52,14 @@ The `interface` module exports two different interface types:
 `Interface.StrictInterface` and `Interface.LooseInterface`.
 See [Loose Mode](#loose-mode) for *Loose Mode* conventions. It
 also exports the general `Interface` type which has the
-`Interface(klass: interface-object, strict: boolean)` signature.
+`Interface(klass: interface-object, mode: integer)` signature.
 The `Interface` type defaults to Strict mode if you don't specify
-a `mode` argument. There are two exported constants, `Interface.STRICT`
-and `Interface.LOOSE` which makes `Interface`'s declaration a
-bit more legible.
+a `mode` argument. Currently there are three exported mode constants,
+`Interface.STRICT`, `Interface.LOOSE`, and `Inteface.UNBOUNDED` which
+makes `Interface`'s declaration a bit more legible.
 
 ## Loose Mode
+
 *Loose Mode* bypasses argument checks for a given interface.
 JavaScript developers tend to play fast and loose with
 implementation method signatures, preferring to only specify
@@ -65,7 +67,15 @@ used arguments. ESLint includes a [rule (no-unused-vars)][no-unused-vars]
 that enforces this concept. To use *Strict Mode* you'll need to
 disable it and a few other rules (see [ESLint](#eslint).).
 
+## Unbounded Mode
+
+Sometimes you need a class to implement a set of methods without
+requiring it to only implement those methods. *Unbounded Mode*
+allows you to declare an interface and then implement the interface
+without the check against number of public methods implemented.
+
 ## ESLint
+
 Conventions in this library differ with some well-established
 ESLint rules. To make sure that use of `Interface` passes ESLint
 checks you should disable the following rules:
@@ -77,7 +87,9 @@ checks you should disable the following rules:
 ```javascript
 /* eslint-disable-rule class-methods-use-this, no-empty-function, no-unused-vars */
 ```
+
 or
+
 ```json
 {
     "rules": {

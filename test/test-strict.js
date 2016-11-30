@@ -76,7 +76,7 @@ test('Strict Mode - Doesn\'t throw if all methods are implemented with the corre
 
   const impl = new TestStrictImpl();
 
-  t.deepEqual(impl, new TestStrictImpl());
+  t.is(impl.constructor.name, 'TestStrictImpl');
 });
 
 test('Strict Mode - Descendent classes can implement missing methods', (t) => {
@@ -90,7 +90,7 @@ test('Strict Mode - Descendent classes can implement missing methods', (t) => {
 
   const impl = new TestInheritStrictImpl();
 
-  t.deepEqual(impl, new TestInheritStrictImpl());
+  t.is(impl.constructor.name, 'TestInheritStrictImpl');
 });
 
 test('Strict Mode - Descendent classes can break a functional interface', (t) => {
@@ -100,7 +100,7 @@ test('Strict Mode - Descendent classes can break a functional interface', (t) =>
   TestInheritStrictImpl.prototype.method3WithParams = function (foo, bar, baz, quiz) { };
 
   const impl = new TestStrictImpl();
-  t.deepEqual(impl, new TestStrictImpl());
+  t.is(impl.constructor.name, 'TestStrictImpl');
 
   const error = t.throws(() => new TestInheritStrictImpl(), ImplementationError);
   const signature = 'method3WithParams(foo, bar, baz)';
