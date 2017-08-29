@@ -1,11 +1,8 @@
-const test = require('ava');
+import test from 'ava';
 
-const ImplementationError = require('../lib/error').ImplementationError;
-const methods = require('../lib/utils/methods');
-const Mode = require('../lib/utils/mode');
-
-const getMethods = methods.getMethods;
-const compareMethods = methods.compareMethods;
+import { ImplementationError } from '../lib/error';
+import { getMethods, compareMethods } from '../lib/utils/methods';
+import Mode from '../lib/utils/mode';
 
 class TestInterface {
   method1() { }

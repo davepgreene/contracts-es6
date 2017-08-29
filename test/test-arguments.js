@@ -1,14 +1,8 @@
-'use strict';
+import test from 'ava';
 
-const test = require('ava');
-
-const ImplementationError = require('../lib/error').ImplementationError;
-const argsUtils = require('../lib/utils/arguments');
-const Mode = require('../lib/utils/mode');
-
-const getArguments = argsUtils.getArguments;
-const compareArguments = argsUtils.compareArguments;
-const getFunctionArguments = argsUtils.getFunctionArguments;
+import { ImplementationError } from '../lib/error';
+import { getArguments, compareArguments, getFunctionArguments } from '../lib/utils/arguments';
+import Mode from '../lib/utils/mode';
 
 class TestImpl {
   method1(foo) { }

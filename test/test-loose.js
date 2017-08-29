@@ -1,15 +1,10 @@
-const test = require('ava');
+import test from 'ava';
 
-const ImplementationError = require('../lib/error').ImplementationError;
-const setup = require('./_consts');
-
-const TestLooseImpl = setup.TestLooseImpl;
-const TestInheritLooseImpl = setup.TestInheritLooseImpl;
-const ERROR_BASE = setup.ERROR_BASE;
-
+import { ImplementationError } from '../lib/error';
+import { TestLooseImpl, TestInheritLooseImpl, ERROR_BASE, reset } from './_consts';
 
 // Call this at the end of every test
-test.afterEach.always(require('./_consts').reset);
+test.afterEach.always(reset);
 
 test('Loose Mode - Throws if all methods are not implemented', (t) => {
   const error = t.throws(() => new TestLooseImpl(), ImplementationError);

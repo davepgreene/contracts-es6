@@ -1,9 +1,7 @@
-'use strict';
+import test from 'ava';
 
-const test = require('ava');
-
-const ImplementationError = require('../lib/error').ImplementationError;
-const Mode = require('../lib/utils/mode');
+import { ImplementationError } from '../lib/error';
+import Mode from '../lib/utils/mode';
 
 const errObj = {
   type: ImplementationError.METHOD_MISSING,

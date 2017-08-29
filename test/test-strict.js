@@ -1,16 +1,11 @@
-const test = require('ava');
+import test from 'ava';
 
-const ImplementationError = require('../lib/error').ImplementationError;
-const setup = require('./_consts');
-const Interface = require('../lib/interface');
-
-const TestStrictImpl = setup.TestStrictImpl;
-const TestInheritStrictImpl = setup.TestInheritStrictImpl;
-const TestInterface = setup.TestInterface;
-const ERROR_BASE = setup.ERROR_BASE;
+import { ImplementationError } from '../lib/error';
+import { TestStrictImpl, TestInheritStrictImpl, TestInterface, ERROR_BASE, reset } from './_consts';
+import Interface from '../lib/interface';
 
 // Call this at the end of every test
-test.afterEach.always(require('./_consts').reset);
+test.afterEach.always(reset);
 
 test('Strict Mode - Not specifying interface type defaults to strict mode', (t) => {
   class DefaultToStrictModeImpl extends Interface(TestInterface) {
