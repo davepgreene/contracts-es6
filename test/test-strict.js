@@ -32,17 +32,6 @@ test('Strict Mode - Throws if all methods are not implemented', (t) => {
   t.is(error.message, errString);
 });
 
-test('Strict Mode - Throws if more methods are implemented than in interface', (t) => {
-  TestStrictImpl.prototype.method1 = function () { };
-  TestStrictImpl.prototype.method2 = function () { };
-  TestStrictImpl.prototype.method3WithParams = function () { };
-  TestStrictImpl.prototype.method4 = function () { };
-
-  const error = t.throws(() => new TestStrictImpl(), ImplementationError);
-  const errString = `${ERROR_BASE} TestStrictImpl implements more public methods than its interface.`;
-  t.is(error.message, errString);
-});
-
 test('Strict Mode - Throws if all methods are implemented but with incorrect number of args', (t) => {
   TestStrictImpl.prototype.method1 = function () { };
   TestStrictImpl.prototype.method2 = function () { };

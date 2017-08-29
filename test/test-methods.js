@@ -117,5 +117,5 @@ test('compareMethods - Assigns the correct strictness level for methods that are
     { object: TestInterface.prototype, methods: ['method1', 'method2', 'method3'] });
 
   const err = compare.get('method1');
-  t.deepEqual(err.mode, [Mode.STRICT, Mode.LOOSE, Mode.UNBOUNDED]);
+  t.deepEqual(err.mode, [Mode.STRICT, Mode.LOOSE]);
 });

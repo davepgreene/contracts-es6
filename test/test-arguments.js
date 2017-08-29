@@ -68,7 +68,7 @@ test('compareArguments - Generates an error if an implementation method has too 
   const out = new Map();
   out.set('method3', {
     type: ImplementationError.INCORRECT_ARGUMENT_NUMBER,
-    mode: [Mode.STRICT, Mode.UNBOUNDED],
+    mode: [Mode.STRICT],
     signature: 'method3(baz, quiz, buzz)',
   });
 
@@ -91,7 +91,7 @@ test('compareArguments - Generates an error if an implementation method has too 
   const out = new Map();
   out.set('method3', {
     type: ImplementationError.INCORRECT_ARGUMENT_NUMBER,
-    mode: [Mode.STRICT, Mode.UNBOUNDED],
+    mode: [Mode.STRICT],
     signature: 'method3(baz, quiz, buzz)',
   });
 
@@ -126,7 +126,7 @@ test('compareArguments - Generates an error if an implementation method has an i
   const out = new Map();
   out.set('method3', {
     type: ImplementationError.INCORRECT_ARGUMENT_NAMES,
-    mode: [Mode.STRICT, Mode.UNBOUNDED],
+    mode: [Mode.STRICT],
     signature: 'method3(baz, buzz)',
   });
 

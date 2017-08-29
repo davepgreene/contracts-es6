@@ -54,9 +54,14 @@ See [Loose Mode](#loose-mode) for *Loose Mode* conventions. It
 also exports the general `Interface` type which has the
 `Interface(klass: interface-object, mode: integer)` signature.
 The `Interface` type defaults to Strict mode if you don't specify
-a `mode` argument. Currently there are three exported mode constants,
-`Interface.STRICT`, `Interface.LOOSE`, and `Inteface.UNBOUNDED` which
+a `mode` argument. Currently there are two exported mode constants,
+`Interface.STRICT` and `Interface.LOOSE` which
 makes `Interface`'s declaration a bit more legible.
+
+## Strict Mode
+
+*Strict Mode* is the traditional interface pattern. *Impl* classes
+must implement all of the methods specified in the interface.
 
 ## Loose Mode
 
@@ -66,13 +71,6 @@ implementation method signatures, preferring to only specify
 used arguments. ESLint includes a [rule (no-unused-vars)][no-unused-vars]
 that enforces this concept. To use *Strict Mode* you'll need to
 disable it and a few other rules (see [ESLint](#eslint).).
-
-## Unbounded Mode
-
-Sometimes you need a class to implement a set of methods without
-requiring it to only implement those methods. *Unbounded Mode*
-allows you to declare an interface and then implement the interface
-without the check against number of public methods implemented.
 
 ## ESLint
 

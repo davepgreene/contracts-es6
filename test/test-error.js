@@ -7,7 +7,7 @@ const Mode = require('../lib/utils/mode');
 
 const errObj = {
   type: ImplementationError.METHOD_MISSING,
-  mode: [Mode.STRICT, Mode.LOOSE, Mode.UNBOUNDED],
+  mode: [Mode.STRICT, Mode.LOOSE],
   signature: 'method1(foo, bar, baz)',
 };
 
@@ -15,13 +15,6 @@ test('Generates an appropriate error string for a missing method', (t) => {
   const str = ImplementationError.generateErrorString('TestImpl', 'method1', errObj);
 
   t.is(str, 'TestImpl must implement `method1` with the following signature: `method1(foo, bar, baz)`.');
-});
-
-test('Generates an appropriate error string for an implementation with more methods than its interface', (t) => {
-  errObj.type = ImplementationError.MORE_METHODS;
-  const str = ImplementationError.generateErrorString('TestImpl', 'method1', errObj);
-
-  t.is(str, 'TestImpl implements more public methods than its interface.');
 });
 
 test('Generates an appropriate error string for a method with the incorrect number of arguments', (t) => {
