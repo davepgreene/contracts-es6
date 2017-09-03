@@ -11,7 +11,7 @@ class TestImpl {
 }
 
 test('getFunctionArguments - Correctly parses a function signature', (t) => {
-  const func = function (foo, bar, baz) { };
+  const func = (foo, bar, baz) => { };
   const funcSignature = getFunctionArguments(func);
 
   t.deepEqual(funcSignature, ['foo', 'bar', 'baz']);

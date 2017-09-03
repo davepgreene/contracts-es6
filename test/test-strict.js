@@ -28,9 +28,9 @@ test('Strict Mode - Throws if all methods are not implemented', (t) => {
 });
 
 test('Strict Mode - Throws if all methods are implemented but with incorrect number of args', (t) => {
-  TestStrictImpl.prototype.method1 = function () { };
-  TestStrictImpl.prototype.method2 = function () { };
-  TestStrictImpl.prototype.method3WithParams = function (foo, bar, baz, quiz) { };
+  TestStrictImpl.prototype.method1 = () => { };
+  TestStrictImpl.prototype.method2 = () => { };
+  TestStrictImpl.prototype.method3WithParams = (foo, bar, baz, quiz) => { };
 
   const error = t.throws(() => new TestStrictImpl(), ImplementationError);
   const signature = 'method3WithParams(foo, bar, baz)';
@@ -41,9 +41,9 @@ test('Strict Mode - Throws if all methods are implemented but with incorrect num
 });
 
 test('Strict Mode - Throws if all methods are implemented but with incorrectly named args', (t) => {
-  TestStrictImpl.prototype.method1 = function () { };
-  TestStrictImpl.prototype.method2 = function () { };
-  TestStrictImpl.prototype.method3WithParams = function (foo, bar, quiz) { };
+  TestStrictImpl.prototype.method1 = () => { };
+  TestStrictImpl.prototype.method2 = () => { };
+  TestStrictImpl.prototype.method3WithParams = (foo, bar, quiz) => { };
 
   const error = t.throws(() => new TestStrictImpl(), ImplementationError);
   const signature = 'method3WithParams(foo, bar, baz)';
@@ -54,9 +54,9 @@ test('Strict Mode - Throws if all methods are implemented but with incorrectly n
 });
 
 test('Strict Mode - Doesn\'t throw if all methods are implemented with the correct args', (t) => {
-  TestStrictImpl.prototype.method1 = function () { };
-  TestStrictImpl.prototype.method2 = function () { };
-  TestStrictImpl.prototype.method3WithParams = function (foo, bar, baz) { };
+  TestStrictImpl.prototype.method1 = () => { };
+  TestStrictImpl.prototype.method2 = () => { };
+  TestStrictImpl.prototype.method3WithParams = (foo, bar, baz) => { };
 
   const impl = new TestStrictImpl();
 
@@ -64,9 +64,9 @@ test('Strict Mode - Doesn\'t throw if all methods are implemented with the corre
 });
 
 test('Strict Mode - Descendent classes can implement missing methods', (t) => {
-  TestInheritStrictImpl.prototype.method1 = function () { };
-  TestInheritStrictImpl.prototype.method2 = function () { };
-  TestInheritStrictImpl.prototype.method3WithParams = function (foo, bar, baz) { };
+  TestInheritStrictImpl.prototype.method1 = () => { };
+  TestInheritStrictImpl.prototype.method2 = () => { };
+  TestInheritStrictImpl.prototype.method3WithParams = (foo, bar, baz) => { };
 
   const parentError = t.throws(() => new TestStrictImpl(), ImplementationError);
   const errString = `${ERROR_BASE} TestStrictImpl must implement \`method1\` with the following signature: \`method1()\`.`;
@@ -78,10 +78,10 @@ test('Strict Mode - Descendent classes can implement missing methods', (t) => {
 });
 
 test('Strict Mode - Descendent classes can break a functional interface', (t) => {
-  TestStrictImpl.prototype.method1 = function () { };
-  TestStrictImpl.prototype.method2 = function () { };
-  TestStrictImpl.prototype.method3WithParams = function (foo, bar, baz) { };
-  TestInheritStrictImpl.prototype.method3WithParams = function (foo, bar, baz, quiz) { };
+  TestStrictImpl.prototype.method1 = () => { };
+  TestStrictImpl.prototype.method2 = () => { };
+  TestStrictImpl.prototype.method3WithParams = (foo, bar, baz) => { };
+  TestInheritStrictImpl.prototype.method3WithParams = (foo, bar, baz, quiz) => { };
 
   const impl = new TestStrictImpl();
   t.is(impl.constructor.name, 'TestStrictImpl');
