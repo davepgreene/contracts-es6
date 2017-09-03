@@ -38,7 +38,7 @@ test('Loose Mode - Returns false if all methods are not implemented in the proto
   TestLooseImpl.prototype.method1 = () => { };
   const valid = Interface.check(TestInheritLooseImpl, false);
   t.is(valid, false);
-})
+});
 
 test('Strict Mode - Returns true if all methods are implemented correctly', (t) => {
   TestStrictImpl.prototype.method1 = () => { };
