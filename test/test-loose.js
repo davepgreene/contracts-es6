@@ -8,8 +8,14 @@ test.afterEach.always(reset);
 
 test('Loose Mode - Throws if all methods are not implemented', (t) => {
   const error = t.throws(() => new TestLooseImpl(), ImplementationError);
-  const errString = `${ERROR_BASE} TestLooseImpl must implement \`method1\` with the following signature: \`method1()\`.`;
-  t.is(error.message, errString);
+  const errors = [
+    'TestLooseImpl must implement `method1` with the following signature: `method1()`.',
+    'TestLooseImpl must implement `method2` with the following signature: `method2()`.',
+    'TestLooseImpl must implement `method3WithParams` with the following signature: `method3WithParams(foo, bar, baz)`.',
+  ];
+
+  t.is(error.message, ERROR_BASE);
+  t.deepEqual(error.errors, errors);
 });
 
 test('Loose Mode - Doesn\'t throw if all methods are implemented', (t) => {
@@ -45,8 +51,14 @@ test('Loose Mode - Descendent classes can implement missing methods', (t) => {
   TestInheritLooseImpl.prototype.method3WithParams = (foo, bar, baz) => { };
 
   const parentError = t.throws(() => new TestLooseImpl(), ImplementationError);
-  const errString = `${ERROR_BASE} TestLooseImpl must implement \`method1\` with the following signature: \`method1()\`.`;
-  t.is(parentError.message, errString);
+  const errors = [
+    'TestLooseImpl must implement `method1` with the following signature: `method1()`.',
+    'TestLooseImpl must implement `method2` with the following signature: `method2()`.',
+    'TestLooseImpl must implement `method3WithParams` with the following signature: `method3WithParams(foo, bar, baz)`.',
+  ];
+
+  t.is(parentError.message, ERROR_BASE);
+  t.deepEqual(parentError.errors, errors);
 
   const impl = new TestInheritLooseImpl();
   t.deepEqual(impl.constructor.name, TestInheritLooseImpl.prototype.constructor.name);

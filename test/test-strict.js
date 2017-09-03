@@ -15,16 +15,24 @@ test('Strict Mode - Not specifying interface type defaults to strict mode', (t) 
   }
 
   const error = t.throws(() => new DefaultToStrictModeImpl(), ImplementationError);
-  const signature = 'method3WithParams(foo, bar, baz)';
-  const errString = `${ERROR_BASE} DefaultToStrictModeImpl implements \`method3WithParams\` with an incorrect ` +
-    `number of arguments. The correct signature is \`${signature}\`.`;
-  t.is(error.message, errString);
+  const errors = [
+    'DefaultToStrictModeImpl implements `method3WithParams` with an incorrect number of arguments. The correct signature is `method3WithParams(foo, bar, baz)`.',
+  ];
+
+  t.is(error.message, ERROR_BASE);
+  t.deepEqual(error.errors, errors);
 });
 
 test('Strict Mode - Throws if all methods are not implemented', (t) => {
   const error = t.throws(() => new TestStrictImpl(), ImplementationError);
-  const errString = `${ERROR_BASE} TestStrictImpl must implement \`method1\` with the following signature: \`method1()\`.`;
-  t.is(error.message, errString);
+  const errors = [
+    'TestStrictImpl must implement `method1` with the following signature: `method1()`.',
+    'TestStrictImpl must implement `method2` with the following signature: `method2()`.',
+    'TestStrictImpl must implement `method3WithParams` with the following signature: `method3WithParams(foo, bar, baz)`.',
+  ];
+
+  t.is(error.message, ERROR_BASE);
+  t.deepEqual(error.errors, errors);
 });
 
 test('Strict Mode - Throws if all methods are implemented but with incorrect number of args', (t) => {
@@ -33,11 +41,12 @@ test('Strict Mode - Throws if all methods are implemented but with incorrect num
   TestStrictImpl.prototype.method3WithParams = (foo, bar, baz, quiz) => { };
 
   const error = t.throws(() => new TestStrictImpl(), ImplementationError);
-  const signature = 'method3WithParams(foo, bar, baz)';
-  const errString = `${ERROR_BASE} TestStrictImpl implements \`method3WithParams\` with an incorrect ` +
-    `number of arguments. The correct signature is \`${signature}\`.`;
+  const errors = [
+    'TestStrictImpl implements `method3WithParams` with an incorrect number of arguments. The correct signature is `method3WithParams(foo, bar, baz)`.',
+  ];
 
-  t.is(error.message, errString);
+  t.is(error.message, ERROR_BASE);
+  t.deepEqual(error.errors, errors);
 });
 
 test('Strict Mode - Throws if all methods are implemented but with incorrectly named args', (t) => {
@@ -46,11 +55,12 @@ test('Strict Mode - Throws if all methods are implemented but with incorrectly n
   TestStrictImpl.prototype.method3WithParams = (foo, bar, quiz) => { };
 
   const error = t.throws(() => new TestStrictImpl(), ImplementationError);
-  const signature = 'method3WithParams(foo, bar, baz)';
-  const errString = `${ERROR_BASE} TestStrictImpl implements \`method3WithParams\` with incorrectly ` +
-    `named arguments. The correct signature is \`${signature}\`.`;
+  const errors = [
+    'TestStrictImpl implements `method3WithParams` with incorrectly named arguments. The correct signature is `method3WithParams(foo, bar, baz)`.',
+  ];
 
-  t.is(error.message, errString);
+  t.is(error.message, ERROR_BASE);
+  t.deepEqual(error.errors, errors);
 });
 
 test('Strict Mode - Doesn\'t throw if all methods are implemented with the correct args', (t) => {
@@ -69,8 +79,14 @@ test('Strict Mode - Descendent classes can implement missing methods', (t) => {
   TestInheritStrictImpl.prototype.method3WithParams = (foo, bar, baz) => { };
 
   const parentError = t.throws(() => new TestStrictImpl(), ImplementationError);
-  const errString = `${ERROR_BASE} TestStrictImpl must implement \`method1\` with the following signature: \`method1()\`.`;
-  t.is(parentError.message, errString);
+  const errors = [
+    'TestStrictImpl must implement `method1` with the following signature: `method1()`.',
+    'TestStrictImpl must implement `method2` with the following signature: `method2()`.',
+    'TestStrictImpl must implement `method3WithParams` with the following signature: `method3WithParams(foo, bar, baz)`.',
+  ];
+
+  t.is(parentError.message, ERROR_BASE);
+  t.deepEqual(parentError.errors, errors);
 
   const impl = new TestInheritStrictImpl();
 
@@ -87,9 +103,10 @@ test('Strict Mode - Descendent classes can break a functional interface', (t) =>
   t.is(impl.constructor.name, 'TestStrictImpl');
 
   const error = t.throws(() => new TestInheritStrictImpl(), ImplementationError);
-  const signature = 'method3WithParams(foo, bar, baz)';
-  const errString = `${ERROR_BASE} TestInheritStrictImpl implements \`method3WithParams\` with an incorrect ` +
-    `number of arguments. The correct signature is \`${signature}\`.`;
+  const errors = [
+    'TestInheritStrictImpl implements `method3WithParams` with an incorrect number of arguments. The correct signature is `method3WithParams(foo, bar, baz)`.',
+  ];
 
-  t.is(error.message, errString);
+  t.is(error.message, ERROR_BASE);
+  t.deepEqual(error.errors, errors);
 });
