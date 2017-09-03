@@ -5,8 +5,8 @@
 Have you ever wished that JavaScript implemented [interfaces][] like
 [Java][], [C#][], or other statically typed languages?
 
-ES6 Contracts provides instantiation-time interface validation for
-ES6 classes. This project was developed against [Node.js][] v7
+ES6 Contracts provides interface validation for
+ES6 classes. This project was developed against [Node.js][] v8
 but is tested against Node.js >= 4. It should run just fine
 in the browser as well.
 
@@ -45,8 +45,64 @@ const impl = new TestStrictImpl();
 ```
 
 If you fail to satisfy the interface, an `ImplementationError`
-will be thrown explaining the error when the implementation is
-instantiated.
+will be thrown explaining the error.
+
+You can access a list of all the implementation issues from
+the `ImplementationError`.
+
+```javascript
+const Interface = require('contracts-es6');
+
+class TestInterface {
+  method1() { }
+  method2() { }
+}
+
+class TestImpl extends Interface.StrictInterface(TestInterface) { }
+
+try {
+  new TestImpl();
+} catch (err) {
+  console.log(err.message);
+  console.log(err.errors);
+}
+
+/*
+output:
+The provided implementation does not fully implement this interface.
+
+[ 'TestImpl must implement `method1` with the following signature: `method1()`.',
+  'TestImpl must implement `method2` with the following signature: `method2()`.' ]
+*/
+```
+
+You can also validate that your implementation fulfills its 
+contract before instantiation by using the `check` function.
+
+```javascript
+const Interface = require('contracts-es6');
+
+class TestInterface {
+  method1() { }
+  method2() { }
+}
+
+class TestImpl extends Interface.StrictInterface(TestInterface) { }
+
+class TestCompleteImpl extends Interface.StrictInterface(TestInterface) { 
+  method1() { }
+  method2() { }
+}
+
+console.log(`TestImpl: ${Interface.check(TestImpl)}`);
+console.log(`TestCompleteImpl: ${Interface.check(TestCompleteImpl)}`);
+
+/*
+output: 
+TestImpl: false
+TestCompleteImpl: true
+*/
+``` 
 
 The `interface` module exports two different interface types:
 `Interface.StrictInterface` and `Interface.LooseInterface`.
@@ -71,6 +127,13 @@ implementation method signatures, preferring to only specify
 used arguments. ESLint includes a [rule (no-unused-vars)][no-unused-vars]
 that enforces this concept. To use *Strict Mode* you'll need to
 disable it and a few other rules (see [ESLint](#eslint).).
+
+## Caveats
+
+Because this is Javascript we're talking about, deriving
+meaningful information about returned values is nearly 
+impossible. Consequently, ES6 Contracts doesn't validate
+return types, only method implementation and signature.  
 
 ## ESLint
 
