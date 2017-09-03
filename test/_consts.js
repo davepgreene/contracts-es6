@@ -20,4 +20,4 @@ export const reset = () => {
   });
 };
 
-export const ERROR_BASE = 'The prototype chain does not fully implement this interface.';
+export const ERROR_BASE = 'The provided implementation does not fully implement this interface.';
