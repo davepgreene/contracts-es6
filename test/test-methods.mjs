@@ -1,8 +1,8 @@
 import test from 'ava';
 
-import { ImplementationError } from '../lib/error';
-import { getMethods, compareMethods } from '../lib/utils/methods';
-import Mode from '../lib/utils/mode';
+import { ImplementationError } from '../lib/error.js';
+import { getMethods, compareMethods } from '../lib/utils/methods.js';
+import Mode from '../lib/utils/mode.js';
 
 class TestInterface {
   method1() { }

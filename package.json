@@ -7,14 +7,14 @@
     "test": "test"
   },
   "scripts": {
-    "test": "nyc ava test/*.js",
-    "coverage": "nyc report --reporter=text",
-    "lint": "eslint */**.js",
+    "test": "c8 ava",
+    "lint": "eslint .",
     "coverage-report": "nyc report --reporter=text-lcov | coveralls"
   },
   "bugs": {
     "url": "https://github.com/davepgreene/contracts-es6/issues"
   },
+  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/davepgreene/contracts-es6.git"
@@ -30,15 +30,24 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "ava": "^0.22.0",
-    "coveralls": "^2.11.15",
-    "eslint": "^4.5.0",
-    "eslint-config-airbnb": "^15.1.0",
-    "eslint-plugin-ava": "^4.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.3.0",
-    "nyc": "^11.1.0",
-    "tape": "^4.6.3"
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "@babel/register": "^7.22.15",
+    "@stylistic/eslint-plugin": "^1.5.1",
+    "ava": "^6.0.1",
+    "c8": "^8.0.1",
+    "eslint": "^8.13.0",
+    "eslint-config-semistandard": "^17.0.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-ava": "^14.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0"
+  },
+  "ava": {
+    "files": [
+      "test/**/*"
+    ]
   }
 }

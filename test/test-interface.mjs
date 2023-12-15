@@ -1,7 +1,7 @@
 import test from 'ava';
 
-import Interface from '../lib/interface';
-import { TestStrictImpl, TestInheritStrictImpl, TestLooseImpl, TestInheritLooseImpl, reset } from './_consts';
+import Interface from '../lib/interface.js';
+import { TestStrictImpl, TestInheritStrictImpl, TestLooseImpl, TestInheritLooseImpl, reset } from './_consts.mjs';
 
 class TestInheritMoreStrictImpl extends TestInheritStrictImpl { }
 class TestInheritMoreLooseImpl extends TestInheritLooseImpl { }

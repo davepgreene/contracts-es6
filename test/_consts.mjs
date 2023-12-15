@@ -1,4 +1,4 @@
-import Interface from '../lib/interface';
+import Interface from '../lib/interface.js';
 
 export class TestInterface {
   method1() { }

@@ -1,7 +1,7 @@
 import test from 'ava';
 
-import { ImplementationError } from '../lib/error';
-import Mode from '../lib/utils/mode';
+import { ImplementationError } from '../lib/error.js';
+import Mode from '../lib/utils/mode.js';
 
 const errObj = {
   type: ImplementationError.METHOD_MISSING,
@@ -38,7 +38,7 @@ test('Throws is given an error type it doesn\'t understand', (t) => {
   errObj.type = 5;
   const error = t.throws(() => {
     ImplementationError.generateErrorString('TestImpl', 'method1', errObj);
-  }, TypeError);
+  }, {instanceOf: TypeError});
 
   t.is(error.message, 'Unknown error.');
 });

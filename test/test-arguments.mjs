@@ -1,8 +1,8 @@
 import test from 'ava';
 
-import { ImplementationError } from '../lib/error';
-import { getArguments, compareArguments, getFunctionArguments } from '../lib/utils/arguments';
-import Mode from '../lib/utils/mode';
+import { ImplementationError } from '../lib/error.js';
+import { getArguments, compareArguments, getFunctionArguments } from '../lib/utils/arguments.js';
+import Mode from '../lib/utils/mode.js';
 
 class TestImpl {
   method1(foo) { }
@@ -128,4 +128,3 @@ test('compareArguments - Generates an error if an implementation method has an i
 
   t.deepEqual(Array.from(compared), Array.from(out));
 });
-
